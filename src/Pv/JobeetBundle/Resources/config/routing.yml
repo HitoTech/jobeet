@@ -1,0 +1,7 @@
+pv_jobeet_job:
+    resource: "@PvJobeetBundle/Resources/config/routing/job.yml"
+    prefix: /job
+
+pv_jobeet_homepage:
+    pattern:  /
+    defaults: { _controller: PvJobeetBundle:Job:index }

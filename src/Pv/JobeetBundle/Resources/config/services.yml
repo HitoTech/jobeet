@@ -1,0 +1,7 @@
+parameters:
+#    pv_jobeet.example.class: Pv\JobeetBundle\Example
+
+services:
+#    pv_jobeet.example:
+#        class: %pv_jobeet.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

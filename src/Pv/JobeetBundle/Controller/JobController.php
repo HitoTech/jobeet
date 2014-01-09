@@ -28,6 +28,7 @@ class JobController extends Controller
         foreach($categories as $category)
         {
             $category->setActiveJobs($em->getRepository('PvJobeetBundle:Job')->getActiveJobs($category->getId(), $this->container->getParameter('max_jobs_on_homepage')));
+            $category->setMoreJobs($em->getRepository('PvJobeetBundle:Job')->countActiveJobs($category->getId()) - $this->container->getParameter('max_jobs_on_homepage'));
         }
 
         return $this->render('PvJobeetBundle:Job:index.html.twig', array(
@@ -49,7 +50,12 @@ class JobController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('pv_job_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('pv_job_show', array(
+                'id' => $entity->getId(),
+                'company' => $entity->getCompanySlug(),
+                'location' => $entity->getLocationSlug(),
+                'position' => $entity->getPositionSlug()
+            )));
         }
 
         return $this->render('PvJobeetBundle:Job:new.html.twig', array(

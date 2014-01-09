@@ -2,6 +2,10 @@ pv_jobeet_job:
     resource: "@PvJobeetBundle/Resources/config/routing/job.yml"
     prefix: /job
 
+pv_jobeet_category:
+    pattern:  /category/{slug}
+    defaults: { _controller: PvJobeetBundle:Category:show }
+
 pv_jobeet_homepage:
     pattern:  /
     defaults: { _controller: PvJobeetBundle:Job:index }
